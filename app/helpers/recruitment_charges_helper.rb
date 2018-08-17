@@ -1,0 +1,2 @@
+module RecruitmentChargesHelper
+end

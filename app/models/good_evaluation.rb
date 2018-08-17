@@ -1,0 +1,2 @@
+class GoodEvaluation < ApplicationRecord
+end

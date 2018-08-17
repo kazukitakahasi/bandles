@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  recruitment_type: 1
+  title: MyString
+  pref: MyString
+  activity_area: 1
+  activity_day: 1
+  activity_direction: 1
+  recruitment_gender: 1
+  recruitment_age: 1
+  recruitment_age2: 1
+  playing_music: 1
+  sound_source: MyString
+  introduction: MyText
+
+two:
+  user_id: 1
+  recruitment_type: 1
+  title: MyString
+  pref: MyString
+  activity_area: 1
+  activity_day: 1
+  activity_direction: 1
+  recruitment_gender: 1
+  recruitment_age: 1
+  recruitment_age2: 1
+  playing_music: 1
+  sound_source: MyString
+  introduction: MyText

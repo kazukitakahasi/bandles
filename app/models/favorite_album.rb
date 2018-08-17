@@ -1,0 +1,2 @@
+class FavoriteAlbum < ApplicationRecord
+end

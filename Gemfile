@@ -60,3 +60,23 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 画像投稿機能搭載するのに必要なgem
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+# devise
+gem 'devise'
+gem 'ransack'
+gem 'kaminari'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'nested_form_fields'
+
+gem 'pry-rails'
+# enum日本語化
+gem 'enum_help'
+
+# 論理削除したuserをadmin側で表示
+gem 'paranoia'
+# 都道府県コードから都道府県名に変換するgem
+gem 'jp_prefecture'
