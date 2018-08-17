@@ -1,0 +1,2 @@
+class UserCharge < ApplicationRecord
+end

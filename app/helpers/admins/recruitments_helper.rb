@@ -1,0 +1,2 @@
+module Admins::RecruitmentsHelper
+end

@@ -1,0 +1,2 @@
+class BadEvaluation < ApplicationRecord
+end

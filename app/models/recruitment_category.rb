@@ -1,0 +1,2 @@
+class RecruitmentCategory < ApplicationRecord
+end
