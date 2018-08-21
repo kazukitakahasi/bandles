@@ -1,2 +1,63 @@
-<h1>Users#edit_profile</h1>
-<p>Find me in app/views/users/edit_profile.html.erb</p>
+<h1>ユーザープロフィール</h1>
+
+<%= form_for(@user) do |f| %>
+	<label>名前</label>
+	<p><%= f.text_field :name, class: "uses_edit-show-info col-xs-3", :placeholder => "" %></p>
+	<div><label>性別</label>
+	<%= f.radio_button :gender , :男性 %><label>男性</label>
+	<%= f.radio_button :gender , :女性 %><label>女性</label></div>
+	<label>誕生日</label>
+	<%== sprintf(f.date_select(:birthday, :use_month_numbers=>true, :date_separator => '%s', :start_year=>1930, :end_year => Time.now.year, :default =>'1990-1-1'.to_date), '年','月') + '日生まれ' %>
+	<div><label>都道府県</label>
+	<%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "sign-up-info-box" %></div>
+	<div><label>URL</label>
+	<%= f.url_field :url %></div>
+
+
+
+	<div>
+		<div><label>好みのジャンル(5つ)</label></div>
+		<%= f.fields_for :user_categories do |m| %>
+		<%= m.collection_select :category_id,
+                                Category.all,
+                                :id,
+                                :name,
+                                multiple: true,
+                                prompt: 'ジャンル' %><br>
+		<% end %>
+	</div>
+
+	<div>
+		<div><label>担当パート(5つ)</label></div>
+		<%= f.fields_for :user_charges do |m| %>
+		<%= m.collection_select :charge_id,
+                                Charge.all,
+                                :id,
+                                :name,
+                                multiple: true,
+                                prompt: 'パート' %><br>
+		<% end %>
+	</div>
+
+
+
+	<div><label>好きなアーティスト(5グループ)</label></div>
+		<%= f.fields_for :favorite_artists do |m| %>
+			<%= m.text_field :name %><br>
+		<% end %>
+	<div><label>好きなアルバム(5枚)</label></div>
+		<%= f.fields_for :favorite_albums do |m| %>
+			<%= m.text_field :name %><br>
+		<% end %>
+
+	<div><label>好きな曲(5曲)</label></div>
+		<%= f.fields_for :favorite_songs do |m| %>
+			<%= m.text_field :name %><br>
+		<% end %>
+	<label>自己紹介文</label>
+	<p><p><%= f.text_field :introduction, class: "uses_edit-show-info col-xs-10", :placeholder => "1000文字以内" %></p></p>
+
+
+
+	<%= f.submit "内容を更新" %>
+<% end %>

@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
   	mypage_user_path(current_user)
   end
 
-  def after_sign_up_path_for(resource)
-  	edit_profile_user_path(current_user)
-  end
-
   def after_sign_out_path_for(resource)
     root_path
   end
