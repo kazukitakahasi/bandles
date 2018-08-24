@@ -1,2 +1,66 @@
-<h1>Recruitments#new_subscription</h1>
-<p>Find me in app/views/recruitments/new_subscription.html.erb</p>
+<h1>バンド加入希望記事投稿</h1>
+
+<%= form_for(@recruitment) do |f| %>
+	<p>記事の種類</p>
+		<div class="select-payment" style="color:black;">
+			<%= f.select :recruitment_type, Recruitment.recruitment_types.keys.to_a, style:"color:black;" %>
+		</div>
+
+	<label>記事の件名</label>
+	<p><%= f.text_field :title, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %></p>
+
+	<p>活動周期</p>
+		<div class="select-payment" style="color:black;">
+			<%= f.select :activity_day, Recruitment.activity_days.keys.to_a, style:"color:black;" %>
+		</div>
+
+	<div><label>都道府県</label>
+	<%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "sign-up-info-box" %></div>
+
+	<p>活動地域</p>
+		<div class="select-payment" style="color:black;">
+			<%= f.select :activity_area, Recruitment.activity_areas.keys.to_a, style:"color:black;" %>
+		</div>
+
+	<p>活動の方向性</p>
+		<div class="select-payment" style="color:black;">
+			<%= f.select :activity_direction, Recruitment.activity_directions.keys.to_a, style:"color:black;" %>
+		</div>
+
+	<p>演奏楽曲</p>
+		<div class="select-payment" style="color:black;">
+			<%= f.select :playing_music, Recruitment.playing_musics.keys.to_a, style:"color:black;" %>
+		</div>
+
+	<label>音源</label>
+	<p><%= f.url_field :sound_source, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %></p>
+
+	<div>
+		<div><label>加入パート</label></div>
+		<%= f.fields_for :recruitment_charges do |m| %>
+		<%= m.collection_select :charge_id,
+                                Charge.all,
+                                :id,
+                                :name,
+                                multiple: true,
+                                prompt: 'パート' %><br>
+		<% end %>
+	</div>
+
+	<div>
+		<div><label>ジャンル</label></div>
+		<%= f.fields_for :recruitment_categories do |m| %>
+		<%= m.collection_select :category_id,
+                                Category.all,
+                                :id,
+                                :name,
+                                multiple: true,
+                                prompt: 'ジャンル' %><br>
+		<% end %>
+	</div>
+
+	<label>記事の内容</label>
+	<p><%= f.text_field :introduction, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %></p>
+
+	<%= f.submit "記事を投稿する" %>
+<% end %>

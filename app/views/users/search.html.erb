@@ -1,2 +1,29 @@
-<h1>Users#search</h1>
-<p>Find me in app/views/users/search.html.erb</p>
+<h1>バンドメンバー検索フォーム</h1>
+
+<%= search_form_for(@q, url:search_result_users_path )  do |f| %>
+
+	<div><label>ネーム</label>
+		<%= f.search_field :name_cont %>を含む
+	</div>
+
+	<div><label>都道府県</label><%= f.collection_select :pref_eq, JpPrefecture::Prefecture.all, :name, :name, :include_blank => '指定なし', class: "sign-up-info-box" %></div>
+
+	<div><label>性別</label><%= f.select :gender_eq, @users.genders, :include_blank => '指定なし' %></div>
+
+	<div><label>年齢</label>
+	</div>
+
+	<div><label>担当パート</label><%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name %></div>
+
+	<div><label>好みのジャンル</label><%= f.collection_check_boxes :categories_id_in, Category.all, :id, :name %></div>
+
+	<div><label>好きなアーティスト・アルバム・曲</label>
+		<%= f.search_field :favorite_artists_name_or_favorite_albums_name_or_favorite_songs_name_cont_any %>を含む
+	</div>
+
+	<div><label>キーワード</label>
+		<%= f.search_field :introduction_cont %>を含む
+	</div>
+
+	<div><%= f.submit "検索", class: "start-search-button flex-end" %></div>
+<% end %>

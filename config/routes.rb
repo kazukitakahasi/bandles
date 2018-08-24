@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   resources :recruitments, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
+      get :subscription
       get :search
       get :search_result
       get :new_subscription

@@ -3,15 +3,27 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @recruitmentband = Recruitment.find_by(user_id: current_user, recruitment_type: '0')
+    @recruitmentadd = Recruitment.find_by(user_id: current_user, recruitment_type: '1')
   end
 
   def show
+    @user = User.find(params[:id])
+    @user_categories = @user.user_categories
+    @user_charges = @user.user_charges
+    @favorite_artists = @user.favorite_artists
+    @favorite_albums = @user.favorite_albums
+    @favorite_songs = @user.favorite_songs
   end
 
   def search
+    @q = User.includes(:user_charges, :charges, :user_categories, :categories, :favorite_artists, :favorite_albums, :favorite_songs ).ransack(params[:q])
+    @users = User.all
   end
 
   def search_result
+    @q = User.includes(:user_charges, :charges, :user_categories, :categories ).ransack(params[:q])
+    @searchresult = @q.result.page(params[:page]).per(30).distinct
   end
 
   def edit
@@ -74,12 +86,30 @@ class UsersController < ApplicationController
   end
 
   def edit_profile_image
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render :edit_profile_image
+    else
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def edit_email
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render :edit_email
+    else
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def edit_password
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render :edit_password
+    else
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def update

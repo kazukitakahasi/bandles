@@ -1,2 +1,20 @@
-<h1>Users#edit_profile_image</h1>
-<p>Find me in app/views/users/edit_profile_image.html.erb</p>
+<div class="users-edit-box">
+    <div class="">
+    	<i class="fa fa-sign-in"></i>
+    </div>
+		<p class="users-edit-title">プロフィール画像の編集</p>
+  <div class="users-edit-boxes">
+  	<p class="users-edit-information">
+  	<%= form_for(@user) do |f| %>
+      <label class="users-edit-information-contents">
+        <label>画像</label>
+        <%= f.attachment_field :profile_image %>
+      </label>
+      <%= f.submit "編集する" %>
+      <%= link_to edit_user_path(@user.id) do %>
+        <button type="button" class="users-edits-button-style" >編集</button>
+      <% end %>
+    <% end %>
+	</p>
+  </div>
+</div>

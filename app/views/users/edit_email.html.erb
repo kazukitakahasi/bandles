@@ -1,2 +1,26 @@
-<h1>Users#edit_email</h1>
-<p>Find me in app/views/users/edit_email.html.erb</p>
+<div class="users-edit-box">
+    <div class="">
+    	<i class="fa fa-sign-in"></i>
+    </div>
+		<p class="users-edit-title">メールアドレスの編集</p>
+  <div class="users-edit-boxes">
+  	<p class="users-edit-information">
+  	<%= form_for(@user) do |f| %>
+      <div class="users-edit-show-informations">
+        <label>現在のメールアドレス</label><br>
+        <div>
+          <div class="users_edit-show-current-phonenumber-email-box"><%= @user.email %></div>
+        </div>
+        </div>
+      <label class="users-edit-information-contents">
+        <label>メールアドレス</label>
+        <%= f.text_field :email %>
+      </label>
+      <%= f.submit "編集する" %>
+      <%= link_to edit_user_path(@user.id) do %>
+        <button type="button" class="users-edits-button-style" >編集</button>
+      <% end %>
+    <% end %>
+	</p>
+  </div>
+</div>

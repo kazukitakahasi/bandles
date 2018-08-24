@@ -108,7 +108,9 @@
       </label>
     </p>
 
-
+    <%= link_to edit_profile_user_path(@user.id) do %>
+        <button type="button" class="users-edits-button-style" >プロフィール設定</button>
+      <% end %>
 
      <%= link_to "退会する", edit_user_registration_path, class: "unsubscribe-button-style" %></p>
   </div>
