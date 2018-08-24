@@ -89,6 +89,16 @@
       </label>
     </p>
 
+    <div>
+      <label>ユーザーの評価</label>
+      <li>
+      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <%= @post_image.favorites.count %> 高評価
+      <% end %>
+      </li>
+    </div>
+
   </div>
 </div>
 </div>
