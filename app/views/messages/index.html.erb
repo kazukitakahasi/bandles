@@ -1,15 +1,21 @@
 
-<div class="user-inverse" style="padding-top:80px;">
-	<h1>メッセージ</h1>
-	<%= form_for @message, url: user_recipient_user_messages_path do |f| %>
-		<p><%= f.text_field :content, class: "receruitment_new-show-info col-xs-8", :placeholder => "内容" %></p>
-
-		<%= f.submit "送信する" %>
-	<% end %>
-	<% @messages.each do |message| %>
-		<div>
-		<%= message.user.name %>
-		<%= message.content %>
-		</div>
-	<% end %>
+<div class="message-inverse" style="padding-top:80px;">
+	<div class="message-form-box">
+		<h1 class="header-buttons-search-recruitments search-user">ユーザーにメッセージを送る</h1>
+		<%= form_for @message, url: user_recipient_user_messages_path do |f| %>
+			<div class="users-message-box">
+				<p><%= f.text_field :content, class: "users-message", :placeholder => "送信内容" %></p>
+				<div class="message-submit-box">
+					<%= f.submit "送信する" %>
+				</div>
+			</div>
+		<% end %>
+		<% @messages.each do |message| %>
+			<div class="each-users-message-box">
+				<label class="message-user-name"><%= message.user.name %></label>
+				<p class="message-user-content"><%= message.content %></p>
+				<label> <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+			</div>
+		<% end %>
+	</div>
 </div>

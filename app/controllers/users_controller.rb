@@ -3,8 +3,13 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @user = User.find(params[:id])
     @recruitmentband = Recruitment.find_by(user_id: current_user, recruitment_type: '0')
     @recruitmentadd = Recruitment.find_by(user_id: current_user, recruitment_type: '1')
+    @users = User.all
+    @messages = Message.where(user_id: current_user, recipient_user: @users).distinct
+    @messages2 = Message.where(user_id: @users, recipient_user: current_user).distinct
+    #binding.pry
   end
 
   def show
