@@ -1,108 +1,118 @@
-<h1>記事のタイトル <label><%= @recruitment.title %></label></h1>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>記事の内容</label>
-        <%= @recruitment.introduction %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>記事の種類</label>
-        <%= @recruitment.recruitment_type %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>活動周期</label>
-        <%= @recruitment.activity_day %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>都道府県</label>
-        <%= @recruitment.pref %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>活動地域</label>
-        <%= @recruitment.activity_area %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>活動の方向性</label>
-        <%= @recruitment.activity_direction %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>演奏楽曲</label>
-        <%= @recruitment.playing_music %>
-    </label>
-</p>
-<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>音源</label>
-        <%= @recruitment.sound_source %>
-    </label>
-</p>
 
-<% if @recruitment.recruitment_type  == 'バンドメンバー募集' %>
+<div class="user-show-inverse" style="padding-top:80px;">
+    <div class="search-form-box">
+        <h1 class="header-buttons-search-recruitments search-user">記事のタイトル：<%= @recruitment.title %></h1>
 
-	<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>募集する年齢</label>
-        <p><%= @recruitment.recruitment_age %>歳から<%= @recruitment.recruitment_age2 %>歳まで</p>
-    </label>
-	</p>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 記事の内容</label>
+                <p><%= @recruitment.introduction %></p>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 記事の種類：</label>
+                <%= @recruitment.recruitment_type %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 活動周期：</label>
+                <%= @recruitment.activity_day %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 都道府県：</label>
+                <%= @recruitment.pref %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 活動地域：</label>
+                <%= @recruitment.activity_area %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 活動の方向性：</label>
+                <%= @recruitment.activity_direction %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 演奏楽曲：</label>
+                <%= @recruitment.playing_music %>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 音源：</label>
+                <%= @recruitment.sound_source %>
+            </label>
+        </div>
 
-	<p class="users-edit-information">
-    <label class="users-edit-information-contents">
-    	<label>募集する性別：</label>
-        <%= @recruitment.recruitment_gender %>
-    </label>
-	</p>
+        <% if @recruitment.recruitment_type  == 'バンドメンバー募集' %>
 
-	<p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>募集パート：</label>
-        <% @recruitment_charges.each do |recruitment_charge| %>
-        	<%= recruitment_charge.charge.name %>
+        	<div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 募集する年齢：</label>
+                <label><%= @recruitment.recruitment_age %>歳から<%= @recruitment.recruitment_age2 %>歳まで</label>
+            </label>
+        	</div>
+
+        	<div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
+            	<label class="recruitment-information-title">● 募集する性別：</label>
+                <%= @recruitment.recruitment_gender %>
+            </label>
+        	</div>
+
+        	<div class="recruitment-information-box">
+              <label class="recruitment-information-contents">
+                <label class="recruitment-information-title">● 募集パート：</label>
+                <% @recruitment_charges.each do |recruitment_charge| %>
+                	<%= recruitment_charge.charge.name %>
+                    <label>/</label>
+                <% end %>
+              </label>
+            </div>
+
+            <div class="recruitment-information-box">
+              <label class="recruitment-information-contents">
+                <label class="recruitment-information-title">● バンドのジャンル：</label>
+                <% @recruitment_categories.each do |recruitment_category| %>
+                	<%= recruitment_category.category.name %>
+                    <label>/</label>
+                <% end %>
+              </label>
+            </div>
+
+            <p>ユーザーの評価：</p>
+
+        <% else %>
+        	<div class="recruitment-information-box">
+              <label class="recruitment-information-contents">
+                <label class="recruitment-information-title">● 加入希望パート：</label>
+                <% @recruitment_charges.each do |recruitment_charge| %>
+                	<%= recruitment_charge.charge.name %>
+                    <label>/</label>
+                <% end %>
+              </label>
+            </div>
+
+            <div class="recruitment-information-box">
+              <label class="recruitment-information-contents">
+                <label class="recruitment-information-title">● バンドのジャンル：</label>
+                <% @recruitment_categories.each do |recruitment_category| %>
+                	<%= recruitment_category.category.name %>
+                    <label>/</label>
+                <% end %>
+              </label>
+            </div>
+
+            <p>ユーザーの評価：</p>
         <% end %>
-      </label>
-    </p>
-
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>バンドのジャンル：</label>
-        <% @recruitment_categories.each do |recruitment_category| %>
-        	<%= recruitment_category.category.name %>
-        <% end %>
-      </label>
-    </p>
-
-    <p>ユーザーの評価：</p>
-
-<% else %>
-	<p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>加入希望パート：</label>
-        <% @recruitment_charges.each do |recruitment_charge| %>
-        	<%= recruitment_charge.charge.name %>
-        <% end %>
-      </label>
-    </p>
-
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>バンドのジャンル：</label>
-        <% @recruitment_categories.each do |recruitment_category| %>
-        	<%= recruitment_category.category.name %>
-        <% end %>
-      </label>
-    </p>
-
-    <p>ユーザーの評価：</p>
-<% end %>
+    </div>
+</div>
 

@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     @favorite_artists = @user.favorite_artists
     @favorite_albums = @user.favorite_albums
     @favorite_songs = @user.favorite_songs
+
+    @good_evaluation = GoodEvaluation.where(evaluated_user: @user.id)
+    @good_evaluationexist = GoodEvaluation.find_by(user_id: current_user, evaluated_user: @user.id)
+    @bad_evaluation = BadEvaluation.where(evaluated_user: @user.id)
+    @bad_evaluationexist = BadEvaluation.find_by(user_id: current_user, evaluated_user: @user.id)
   end
 
   def search

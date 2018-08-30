@@ -1,0 +1,176 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+/*---------------header----------------*/
+
+.navbar-inverse{
+  background-color: #19191e;
+}
+
+.container-fluid{
+	padding: 15px 30px;
+}
+.navbar-brand{
+  padding: 6px 15px;
+  /* フォントサイズなどを任意で指定する */
+  font: bold 30px / 1 Verdana, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  /* 背景グラデーションを指定・幅を 200% にしておく */
+  background: linear-gradient(to right, #f00 0%, #e0e 15%, #b25979 30%, #c6639e 45%, #0085de 60%, #ffcd25 75%, #f53b1a 90%) 0% center / 200% auto;
+
+  /* 背景画像を文字でマスクする */
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  /* 文字色を透明にできればよく color: transparent でも color: rgba(0, 0, 0, 0) でも可 */
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; 
+
+  /* アニメーション指定 */
+  animation: example 4s linear infinite; 
+}
+.header-buttons-recruitments{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #f00 0%, #e0e 42.85%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-subscriptions{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #b25979 0%, #f80 50%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-search-recruitments{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #c6639e 0%, #0085de 50%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-search-users{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #379b65 0%, #ffcd25 50%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-mypage{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ffcd25 0%, #f53b1a 50%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-signup{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #aa0044 0%, #e0002a 50%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.header-buttons-signin{
+  font: bold 14px / 1 Verdana, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ca4d86 0%, #ac0061 40%) 0% center / 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+/*---------------全画面のdiv-box----------------*/
+
+.user-inverse {
+	width: 100%;
+	height: 1000px;
+	/*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
+}
+
+
+/*---------------footer----------------*/
+
+footer{
+	width: 100%;
+	background-color: #19191e;
+	/*position: fixed;*/
+    bottom: 0px;
+    left: 0px;
+    clear: both;
+    display: block;
+}
+.loadingBarFooter {
+    height: 3px;
+    width: 100%;
+
+  	/* フォントサイズなどを任意で指定する */
+  	font: bold 10em / 1 Verdana, Helvetica, Arial, sans-serif;
+  	text-transform: uppercase;
+
+  	/* 背景グラデーションを指定・幅を 200% にしておく */
+  	background: linear-gradient(to right, #f00 0%, #f80 14.28%, #dd0 28.56%, #0d0 42.85%, #0dd 57.14%, #00f 71.42%, #e0e 85.71%, #f00 100%) 0% center / 200% auto;
+
+  	/* 背景画像を文字でマスクする */
+    background-clip: text;
+
+  	/* 文字色を透明にできればよく color: transparent でも color: rgba(0, 0, 0, 0) でも可 */
+    text-fill-color: transparent;
+  	-webkit-text-fill-color: transparent;
+
+  	/* アニメーション指定 */
+  	animation: example 4s linear infinite;
+}
+
+/* 背景の横位置をズラす */
+@keyframes example {
+  to { background-position-x: 200%; }
+}
+
+.fab{
+	margin: 5px;
+}
+.sns-icons{
+	color: #f80;
+	width: 200px;
+	text-align: center;
+}
+

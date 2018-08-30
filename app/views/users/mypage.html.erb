@@ -1,25 +1,28 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
-<div>
-	<% if @recruitmentband.nil? %>
-		<%= link_to new_recruitment_path, class: "glyphicon glyphicon-log-out" do %>バンド募集記事投稿<% end %>
 
-	<% else %>
-		<%= link_to recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
-		<%= link_to edit_recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>バンド募集記事編集<% end %>
-		<%= link_to "削除", recruitment_path(@recruitmentband.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
-	<% end %>
+<div class="user-inverse" style="padding-top:80px;">
+	<h1>Users#mypage</h1>
+	<p>Find me in app/views/users/mypage.html.erb</p>
+	<div>
+		<% if @recruitmentband.nil? %>
+			<%= link_to new_recruitment_path, class: "glyphicon glyphicon-log-out" do %>バンド募集記事投稿<% end %>
+
+		<% else %>
+			<%= link_to recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
+			<%= link_to edit_recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>バンド募集記事編集<% end %>
+			<%= link_to "削除", recruitment_path(@recruitmentband.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
+		<% end %>
+	</div>
+
+	<div>
+		<% if @recruitmentadd.nil? %>
+			<%= link_to new_subscription_recruitments_path, class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事投稿<% end %>
+
+		<% else %>
+			<%= link_to recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
+			<%= link_to edit_subscription_recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事編集<% end %>
+			<%= link_to "削除", recruitment_path(@recruitmentadd.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
+		<% end %>
+	</div>
+
+	<%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>Log out<% end %>
 </div>
-
-<div>
-	<% if @recruitmentadd.nil? %>
-		<%= link_to new_recruitment_path, class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事投稿<% end %>
-
-	<% else %>
-		<%= link_to recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
-		<%= link_to edit_subscription_recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事編集<% end %>
-		<%= link_to "削除", recruitment_path(@recruitmentadd.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
-	<% end %>
-</div>
-
-<%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>Log out<% end %>

@@ -38,8 +38,8 @@ class User < ApplicationRecord
   enum gender: { 男性: 0, 女性: 1 }
 
   has_many :recruitments
-  has_many :bad_evaluations
-  has_many :good_evaluations
+  has_many :bad_evaluations, dependent: :destroy
+  has_many :good_evaluations, dependent: :destroy
   has_many :reports
   has_many :messages
 

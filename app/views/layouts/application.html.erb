@@ -7,16 +7,127 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-    <div class= "notice">
-      <div class= "alert alert-<%= key %>">
-        <%= value %>
-      </div>
-    </div>
-    <% end %>
+
+    <header>
+      <nav class="navbar navbar-inverse navbar-fixed-top headline">
+        <div id="loadingBarFooter" class="loadingBarFooter"></div>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">
+              <%= link_to root_path do %>
+              <span>Bandles</span>
+             <% end %>
+            </div>
+            <% flash.each do |key, value| %>
+              <span class= "notice">
+                <span class= "alert alert-<%= key %>">
+                  <span class="flash-message"><%= value %></span>
+                </span>
+              </span>
+            <% end %>
+          </div>
+
+        <% if user_signed_in? %>
+        <!-- ログインしているときは以下を表示 -->
+          <div class="collapse navbar-collapse" id="navbarEexample8">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <%= link_to recruitments_path, class: "header-buttons-recruitments" do %>
+                  メンバー募集記事一覧
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to subscription_recruitments_path, class: "header-buttons-subscriptions" do %>
+                  加入希望記事一覧
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to search_recruitments_path, class: "header-buttons-search-recruitments" do %>
+                  記事を探す
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to search_users_path, class: "header-buttons-search-users" do %>
+                  メンバーを探す
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to mypage_user_path(current_user), class: "header-buttons-mypage" do %>
+                  マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "" do %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        <!-- ログインしていないときは以下を表示 -->
+        <% else %>
+          <div class="collapse navbar-collapse" id="navbarEexample8">
+            <ul class="nav navbar-nav navbar-right">
+
+              <li class="">
+                <%= link_to recruitments_path, class: "header-buttons-recruitments" do %>
+                  メンバー募集記事一覧
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to subscription_recruitments_path, class: "header-buttons-subscriptions" do %>
+                  加入希望記事一覧
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to search_recruitments_path, class: "header-buttons-search-recruitments" do %>
+                  記事を探す
+                <% end %>
+              </li>
+              <li class="">
+                <%= link_to search_users_path, class: "header-buttons-search-users" do %>
+                  メンバーを探す
+                <% end %>
+              </li>
+              <li class="header-buttons">
+                <%= link_to new_user_registration_path, class: "header-buttons-signup" do %>
+                  Sign up
+                <% end %>
+              </li>
+              <li class="header-buttons">
+                <%= link_to new_user_session_path, class: "header-buttons-signin" do %>
+                  LogIn
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <div id="loadingBarFooter" class="loadingBarFooter"></div>
+      <div class= copyright>
+        <p align="right" style="padding:25px 30px 0px 30px;"><font color="white">Copyright ©️Tokyo Rails g</font></p>
+      </div>
+      <div class="sns-icons">
+        <i class="fab fab fa-2x fa-facebook-square"></i>
+        <i class="fab fa-2x fa-twitter-square"></i>
+        <i class="fab fa-2x fa-line"></i>
+        <i class="fab fa-2x fa-spotify"></i>
+      </div>
+    </footer>
   </body>
 </html>

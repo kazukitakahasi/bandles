@@ -1,26 +1,40 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="sign-in-background-image" style="padding-top:80px;">
+  <div class="view-registration-box">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="mail-icon">
+      <p class="page-title"></p><br>
+      <p class="header-buttons-signin sign-up">Log In</p>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="sign-up-boxes">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="users-devise-error-message"><%= devise_error_messages! %></div>
+
+        <div class="sign-up-content-box">
+          <div class="sign-up-info-boxes">
+            <label class="sign-up-info-label">メールアドレス</label>
+            <%= f.email_field :email, autocomplete: "email", :placeholder => "メールアドレス", class: "sign-up-info-box" %>
+          </div>
+
+          <div class="sign-up-info-boxes">
+            <label class="sign-up-info-label">パスワード</label>
+            <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)", class: "sign-up-info-box" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="action-sign-up-info-box">
+            <%= f.submit "Log In", class: "sign-up-info-box-button" %>
+          </div>
+        </div>
+      <% end %>
+      <%= render "users/shared/links" , class: "sign-up-info-box"  %>
+    </div>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
