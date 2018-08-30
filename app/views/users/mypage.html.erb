@@ -1,28 +1,65 @@
 
-<div class="user-inverse" style="padding-top:80px;">
-	<h1>Users#mypage</h1>
-	<p>Find me in app/views/users/mypage.html.erb</p>
-	<div>
-		<% if @recruitmentband.nil? %>
-			<%= link_to new_recruitment_path, class: "glyphicon glyphicon-log-out" do %>バンド募集記事投稿<% end %>
+<div class="message-inverse" style="padding-top:80px;">
+	<div class="message-form-box">
+		<h1 class="header-buttons-search-recruitments search-user">マイページ</h1>
+		<div class="edit-user-box">
+			<%= link_to edit_user_path(@user.id) do %>プロフィール編集<% end %>
+		</div>
+		<div>
+			<% if @recruitmentband.nil? %>
+				<div class="edit-user-box">
+					<%= link_to new_recruitment_path, class: "glyphicon glyphicon-log-out" do %>バンド募集記事投稿<% end %>
+				</div>
 
-		<% else %>
-			<%= link_to recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
-			<%= link_to edit_recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>バンド募集記事編集<% end %>
-			<%= link_to "削除", recruitment_path(@recruitmentband.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
-		<% end %>
+			<% else %>
+				<div class="edit-user-box">
+					<%= link_to recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>バンド募集記事詳細<% end %>
+				</div>
+				<div class="edit-user-box">
+					<%= link_to edit_recruitment_path(@recruitmentband.id), class: "glyphicon glyphicon-log-out" do %>バンド募集記事編集<% end %>
+				</div>
+				<div class="edit-user-box">
+					<%= link_to "バンド募集記事の削除", recruitment_path(@recruitmentband.id), method: :delete, "data-confirm" => "Are you sure" %>
+				</div>
+			<% end %>
+		</div>
+
+		<div>
+			<% if @recruitmentadd.nil? %>
+				<div class="edit-user-box">
+					<%= link_to new_subscription_recruitments_path, class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事投稿<% end %>
+				</div>
+
+			<% else %>
+				<div class="edit-user-box">
+					<%= link_to recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事詳細<% end %>
+				</div>
+				<div class="edit-user-box">
+					<%= link_to edit_subscription_recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事編集<% end %>
+				</div>
+				<div class="edit-user-box">
+					<%= link_to "バンド加入希望記事の削除", recruitment_path(@recruitmentadd.id), method: :delete, "data-confirm" => "Are you sure"%>
+				</div>
+			<% end %>
+		</div>
+		<div class="mypage-messages-box">
+			<h2>メッセージ一覧ユーザー</h2>
+			<% @messages.each do |message| %>
+				<label><%= message.user.name %>さん</label>
+				<%= link_to user_recipient_user_messages_path(current_user.id, message.recipient_user) do %>
+		            <p>メッセージを送る</p>
+		         <% end %>
+			<% end %>
+			<% @messages2.each do |message| %>
+				<label><%= message.user.name %>さん</label>
+				<%= link_to user_recipient_user_messages_path( current_user.id, message.user.id) do %>
+		            <p>メッセージを送る</p>
+		         <% end %>
+			<% end %>
+
+		</div>
+		<div class="edit-user-box">
+			<%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>Log out<% end %>
+		</div>
 	</div>
-
-	<div>
-		<% if @recruitmentadd.nil? %>
-			<%= link_to new_subscription_recruitments_path, class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事投稿<% end %>
-
-		<% else %>
-			<%= link_to recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>記事詳細<% end %>
-			<%= link_to edit_subscription_recruitment_path(@recruitmentadd.id), class: "glyphicon glyphicon-log-out" do %>バンド加入希望記事編集<% end %>
-			<%= link_to "削除", recruitment_path(@recruitmentadd.id), method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
-		<% end %>
-	</div>
-
-	<%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>Log out<% end %>
 </div>

@@ -1,3 +1,41 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message-inverse{
+	width: 100%;
+	height: 1500px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent), image-url('p0113_l.jpeg');
+	/*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
+}
+.message-form-box{
+	width: 90%;
+	margin: 0 auto;
+}
+.users-message-box{
+	padding: 40px 30px;
+}
+.users-message{
+	width: 500px;
+  	height: 100px;
+  	border: solid 2px green;
+    border-radius: 5px;
+}
+.message-submit-box{
+	padding-left: 400px;
+	font-size: 18px;
+}
+.each-users-message-box{
+	padding: 10px 30px;
+}
+.message-user-name{
+	font-size: 18px;
+	color: #0085de;
+}
+.message-user-content{
+	width: 50%;
+	font-size: 15px;
+	border: solid 2px #c6639e;
+	border-radius: 5px;
+	padding: 10px;
+}

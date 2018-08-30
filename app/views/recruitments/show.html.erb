@@ -5,6 +5,16 @@
 
         <div class="recruitment-information-box">
             <label class="recruitment-information-contents">
+                <label class="recruitment-information-title">● ユーザー名：</label>
+                <label><%= @recruitment.user.name %></label>
+                <p><%= link_to user_path(@recruitment.user.id) do %>
+                    <p>プロフィールへ</p>
+                    <% end %>
+                </p>
+            </label>
+        </div>
+        <div class="recruitment-information-box">
+            <label class="recruitment-information-contents">
             	<label class="recruitment-information-title">● 記事の内容</label>
                 <p><%= @recruitment.introduction %></p>
             </label>
@@ -88,8 +98,6 @@
               </label>
             </div>
 
-            <p>ユーザーの評価：</p>
-
         <% else %>
         	<div class="recruitment-information-box">
               <label class="recruitment-information-contents">
@@ -110,8 +118,6 @@
                 <% end %>
               </label>
             </div>
-
-            <p>ユーザーの評価：</p>
         <% end %>
     </div>
 </div>

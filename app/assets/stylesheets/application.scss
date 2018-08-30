@@ -19,7 +19,7 @@
 /*---------------header----------------*/
 
 .navbar-inverse{
-  background-color: #19191e;
+	background: image-url('p0527_l.jpeg');
 }
 
 .container-fluid{
@@ -123,6 +123,7 @@
 .user-inverse {
 	width: 100%;
 	height: 1000px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent), image-url('p0113_l.jpeg');
 	/*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
 }
 
@@ -131,7 +132,7 @@
 
 footer{
 	width: 100%;
-	background-color: #19191e;
+	background: image-url('p0520_l.jpeg');
 	/*position: fixed;*/
     bottom: 0px;
     left: 0px;

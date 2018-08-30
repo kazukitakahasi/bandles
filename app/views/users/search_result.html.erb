@@ -6,9 +6,11 @@
 		<%= link_to user_path(user.id) do %>
 			<%= user.name %>
 		<% end %>
+		(
 		<label><%= user.pref %></label>
 		<label><%= user.gender %></label>
-		<label><%= user.birthday %></label>
+		<label><%= user.age %>歳</label>
+		）
 		<label><%= user.introduction %></label>
 	<% end %>
 </div>
