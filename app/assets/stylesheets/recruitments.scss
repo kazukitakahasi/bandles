@@ -1,3 +1,63 @@
 // Place all the styles related to the recruitments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*---------------募集記事検索フォーム----------------*/
+
+.user-inverse-searchrecruitmentimage{
+	width: 100%;
+	height: 1000px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent), url('audience-band-blur-613813.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*---------------募集記事投稿----------------*/
+
+table.newform{
+	border-collapse: separate;
+    border-spacing: 30px;
+    font-size: 15px;
+    color: black;
+}
+
+/*---------------メンバー募集記事一覧----------------*/
+
+.recruitment-box{
+	width: 70%;
+	border-bottom: solid 1px #dbdbdb;
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.recruitment-title-user-box{
+	padding: 20px 0px 0px 20px;
+}
+.recruitment-title-box{
+	font-size: 17px;
+	padding-bottom: 15px;
+}
+
+/*---------------募集記事詳細----------------*/
+
+.recruitment-information-box{
+	font-size: 15px;
+	padding: 10px 0px;
+}
+.recruitment-information-title{
+	color: #0085de;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

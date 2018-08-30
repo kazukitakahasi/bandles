@@ -1,29 +1,55 @@
-<h1>バンドメンバー検索フォーム</h1>
 
-<%= search_form_for(@q, url:search_result_users_path )  do |f| %>
-
-	<div><label>ネーム</label>
-		<%= f.search_field :name_cont %>を含む
+<div class="user-inverse-searchuserimage" style="padding-top:80px;">
+	<div class="search-form-box">
+		<h1 class="header-buttons-search-users search-user">バンドメンバー検索フォーム</h1>
+		<%= search_form_for(@q, url:search_result_users_path )  do |f| %>
+			<table class="form">
+				<tbody>
+					<tr>
+						<th><label>ネーム</label></th>
+						<td><%= f.search_field :name_cont, class: "search-name-field" %><span class="include">を含む</span></td>
+					</tr>
+					<tr>
+						<th><label>都道府県</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.collection_select :pref_eq, JpPrefecture::Prefecture.all, :name, :name, :include_blank => '指定なし', class: "sign-up-info-box" %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>性別</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :gender_eq, @users.genders, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>年齢</label></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th><label>担当パート</label></th>
+						<td><%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name, class: "search-check-box" %></td>
+					</tr>
+					<tr>
+						<th><label>好みのジャンル</label></th>
+						<td><%= f.collection_check_boxes :categories_id_in, Category.all, :id, :name %></td>
+					</tr>
+					<tr>
+						<th><label>好きなアーティスト・アルバム・曲</label></th>
+						<td><%= f.search_field :favorite_artists_name_or_favorite_albums_name_or_favorite_songs_name_cont_any, class: "search-name-field" %><span class="include">を含む</span></td>
+					</tr>
+					<tr>
+						<th><label>キーワード</label></th>
+						<td><%= f.search_field :introduction_cont, class: "search-name-field"  %><span class="include">を含む</span></td>
+					</tr>
+					<tr>
+						<th><%= f.submit "検索", class: "start-search-button col-xs-7 bg-danger", style: "color:black;" %></th>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
 	</div>
-
-	<div><label>都道府県</label><%= f.collection_select :pref_eq, JpPrefecture::Prefecture.all, :name, :name, :include_blank => '指定なし', class: "sign-up-info-box" %></div>
-
-	<div><label>性別</label><%= f.select :gender_eq, @users.genders, :include_blank => '指定なし' %></div>
-
-	<div><label>年齢</label>
-	</div>
-
-	<div><label>担当パート</label><%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name %></div>
-
-	<div><label>好みのジャンル</label><%= f.collection_check_boxes :categories_id_in, Category.all, :id, :name %></div>
-
-	<div><label>好きなアーティスト・アルバム・曲</label>
-		<%= f.search_field :favorite_artists_name_or_favorite_albums_name_or_favorite_songs_name_cont_any %>を含む
-	</div>
-
-	<div><label>キーワード</label>
-		<%= f.search_field :introduction_cont %>を含む
-	</div>
-
-	<div><%= f.submit "検索", class: "start-search-button flex-end" %></div>
-<% end %>
+</div>

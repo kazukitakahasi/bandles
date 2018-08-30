@@ -1,33 +1,98 @@
-<h1>募集記事検索フォーム</h1>
 
-<%= search_form_for(@q, url:search_result_recruitments_path )  do |f| %>
-
-	<div><%= f.select :recruitment_type_eq, Recruitment.recruitment_types %></div>
-
-	<div><%= f.collection_select :pref_eq, JpPrefecture::Prefecture.all, :name, :name, :include_blank => '指定なし', class: "sign-up-info-box" %></div>
-
-	<div><label>募集パート</label><%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name %></div>
-
-	<div><label>ジャンル</label><%= f.collection_check_boxes :categories_id_in, Category.all, :id, :name %></div>
-
-	<div><label>活動地域</label><%= f.select :activity_area_eq, Recruitment::ACTIVITYAREA, :include_blank => '指定なし' %></div>
-
-	<div><label>活動周期</label><%= f.select :activity_day_eq, Recruitment::ACTIVITYDAY, :include_blank => '指定なし' %></div>
-
-	<div><label>活動の方向性</label><%= f.select :activity_direction_eq, Recruitment::ACTIVITYDIRECTION, :include_blank => '指定なし' %></div>
-
-	<div><label>演奏楽曲</label><%= f.select :playing_music_eq, Recruitment::PLAYINGMUSIC, :include_blank => '指定なし' %></div>
-
-	<div><label>性別</label><%= f.select :recruitment_gender_eq, Recruitment::GENDER, :include_blank => '指定なし' %></div>
-
-	<div><label>募集の年齢</label>
-		<%= f.number_field :recruitment_age_gteq_any, min: 5, max: 100, class: "bpm-select-range" %><label> ~ </label>
-		<%= f.number_field :recruitment_age2_lteq_any, min: 5, max: 100, class: "bpm-select-range" %>
+<div class="user-inverse-searchrecruitmentimage" style="padding-top:80px;">
+	<div class="search-form-box">
+		<h1 class="header-buttons-search-recruitments search-user">募集記事検索フォーム</h1>
+		<%= search_form_for(@q, url:search_result_recruitments_path )  do |f| %>
+			<table class="form">
+				<tbody>
+					<tr>
+						<th><label>記事の種類</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :recruitment_type_eq, Recruitment.recruitment_types %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>都道府県</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.collection_select :pref_eq, JpPrefecture::Prefecture.all, :name, :name, :include_blank => '指定なし', class: "sign-up-info-box" %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>募集パート</label></th>
+						<td>
+							<%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name %>
+						</td>
+					</tr>
+					<tr>
+						<th><label>ジャンル</label></th>
+						<td>
+							<%= f.collection_check_boxes :categories_id_in, Category.all, :id, :name %>
+						</td>
+					</tr>
+					<tr>
+						<th><label>活動地域</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :activity_area_eq, Recruitment::ACTIVITYAREA, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>活動周期</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :activity_day_eq, Recruitment::ACTIVITYDAY, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>活動の方向性</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :activity_direction_eq, Recruitment::ACTIVITYDIRECTION, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>演奏楽曲</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :playing_music_eq, Recruitment::PLAYINGMUSIC, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>性別</label></th>
+						<td>
+							<div class="search-select-box">
+								<%= f.select :recruitment_gender_eq, Recruitment::GENDER, :include_blank => '指定なし' %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label>募集の年齢</label></th>
+						<td>
+							<%= f.number_field :recruitment_age_gteq_any, min: 5, max: 100, class: "bpm-select-range" %>
+							<span class="include"> 歳 〜 </span>
+							<%= f.number_field :recruitment_age2_lteq_any, min: 5, max: 100, class: "bpm-select-range" %><span class="include"> 歳 </span>
+						</td>
+					</tr>
+					<tr>
+						<th><label>キーワード</label></th>
+						<td>
+							<%= f.search_field :title_or_introduction_cont_any %>
+							<span class="include">を含む</span>
+						</td>
+					</tr>
+					<tr>
+						<th><%= f.submit "検索", class: "start-search-button col-xs-12 bg-danger", style: "color:black;" %></th>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
 	</div>
-
-	<div><label>キーワード</label>
-		<%= f.search_field :title_or_introduction_cont_any %>を含む
-	</div>
-
-	<div><%= f.submit "検索", class: "start-search-button flex-end" %></div>
-<% end %>
+</div>

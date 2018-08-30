@@ -1,104 +1,129 @@
 
-<div class="users-edit-box">
-    <div class="">
-    	<i class="fa fa-sign-in"></i>
-    </div>
-		<p class="users-edit-title"><%= @user.name %>さんのプロフィール</p>
-  <div class="users-edit-boxes">
-  	<p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>画像</label>
-        <%= attachment_image_tag @user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '200', :height => '200' %>
-      </label>
-	</p>
-	<p class="users-edit-information-name">
-		<label>名前：</label>
-		<label><%= @user.name %></label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>性別：</label>
-        <%= @user.gender%>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>年齢：</label>
-        <%= @user.birthday %>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>都道府県</label>
-        <%= @user.pref %>
-      </label>
-    </p>
-
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>自己紹介文</label>
-        <%= @user.introduction %>
-      </label>
-    </p>
-
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>担当楽器</label>
-        <% @user_charges.each do |user_charge| %>
-        	<%= user_charge.charge.name %>
+<div class="user-show-inverse" style="padding-top:80px;">
+  <div class="search-form-box">
+    <h1 class="header-buttons-search-users search-user">'<%= @user.name %>'さんのプロフィール</h1>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <%= attachment_image_tag @user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '200', :height => '200' %>
+        </label>
+    	</div>
+    	<div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+      		<label class="recruitment-information-title">● 名前：</label>
+      		<label><%= @user.name %></label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 性別：</label>
+          <%= @user.gender%>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 年齢：</label>
+          <%= @user.birthday %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 都道府県：</label>
+          <%= @user.pref %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 自己紹介文：</label>
+          <%= @user.introduction %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 担当楽器：</label>
+          <% @user_charges.each do |user_charge| %>
+          	<%= user_charge.charge.name %>
+            <label>/</label>
+          <% end %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 好みのジャンル：</label>
+          <% @user_categories.each do |user_category| %>
+          	<%= user_category.category.name %>
+            <label>/</label>
+          <% end %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 好きなアーティスト：</label>
+          <% @favorite_artists.each do |favorite_artist| %>
+          	<label class="favorite-box"><%= favorite_artist.name %></label>
+          <% end %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 好きなアルバム：</label>
+          <% @favorite_albums.each do |favorite_album| %>
+          	<label class="favorite-box"><%= favorite_album.name %></label>
+          <% end %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● 好きな曲：</label>
+          <% @favorite_songs.each do |favorite_song| %>
+          	<label class="favorite-box"><%= favorite_song.name %></label>
+          <% end %>
+        </label>
+      </div>
+      <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <label class="recruitment-information-title">● URL：</label>
+          <%= @user.url %>
+        </label>
+      </div>
+      <div>
+        <%= link_to user_recipient_user_messages_path(current_user.id, @user.id) do %>
+          <p>メッセージを送る</p>
         <% end %>
-      </label>
-    </p>
+      </div>
 
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>好みのジャンル</label>
-        <% @user_categories.each do |user_category| %>
-        	<%= user_category.category.name %>
-        <% end %>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>好きなアーティスト</label>
-        <% @favorite_artists.each do |favorite_artist| %>
-        	<%= favorite_artist.name %>
-        <% end %>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>好きなアルバム</label>
-        <% @favorite_albums.each do |favorite_album| %>
-        	<%= favorite_album.name %>
-        <% end %>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>好きな曲</label>
-        <% @favorite_songs.each do |favorite_song| %>
-        	<%= favorite_song.name %>
-        <% end %>
-      </label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>URL</label>
-        <%= @user.url %>
-      </label>
-    </p>
+      <div>
+        <label>ユーザーの評価</label>
 
-    <div>
-      <label>ユーザーの評価</label>
-      <li>
-      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-        <i class="fa fa-heart-o" aria-hidden="true"></i>
-        <%= @post_image.favorites.count %> 高評価
-      <% end %>
-      </li>
-    </div>
+        <% if @good_evaluationexist.blank? %>
+          <li>
+            <%= link_to user_good_evaluations_path(@user), method: :post do %>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <%= @good_evaluation.count %> 高評価
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to user_good_evaluations_path(@user), method: :delete do %>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <%= @good_evaluation.count %> 高評価
+            <% end %>
+          </li>
+        <% end %>
 
+        <% if @bad_evaluationexist.blank? %>
+          <li>
+            <%= link_to user_bad_evaluations_path(@user), method: :post do %>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <%= @bad_evaluation.count %> 低評価
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to user_bad_evaluations_path(@user), method: :delete do %>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <%= @bad_evaluation.count %> 低評価
+            <% end %>
+          </li>
+        <% end %>
+      </div>
   </div>
-</div>
 </div>
