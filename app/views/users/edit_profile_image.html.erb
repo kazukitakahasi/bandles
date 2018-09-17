@@ -1,10 +1,7 @@
 
 <div class="user-inverse" style="padding-top:80px;">
-  <div class="users-edit-box">
-      <div class="">
-      	<i class="fa fa-sign-in"></i>
-      </div>
-  		<p class="users-edit-title">プロフィール画像の編集</p>
+  <div class="search-form-box">
+    <h1 class="header-buttons-search-users search-user">プロフィール画像の編集</h1>
     <div class="users-edit-boxes">
     	<p class="users-edit-information">
     	<%= form_for(@user) do |f| %>
@@ -14,7 +11,7 @@
         </label>
         <%= f.submit "編集する" %>
         <%= link_to edit_user_path(@user.id) do %>
-          <button type="button" class="users-edits-button-style" >編集</button>
+          <button type="button" class="users-edits-button-style" >編集画面に戻る</button>
         <% end %>
       <% end %>
   	</p>

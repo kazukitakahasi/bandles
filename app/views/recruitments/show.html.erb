@@ -58,7 +58,9 @@
         <div class="recruitment-information-box">
             <label class="recruitment-information-contents">
             	<label class="recruitment-information-title">● 音源：</label>
-                <%= @recruitment.sound_source %>
+                <div class="youtube">
+                  <iframe width="400" height="315" src="https://www.youtube.com/embed/<%= @recruitment.sound_source %>" frameborder="0" allowfullscreen></iframe>
+                </div>
             </label>
         </div>
 

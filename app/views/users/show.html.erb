@@ -4,7 +4,7 @@
     <h1 class="header-buttons-search-users search-user">'<%= @user.name %>'さんのプロフィール</h1>
       <div class="recruitment-information-box">
         <label class="recruitment-information-contents">
-          <%= attachment_image_tag @user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '200', :height => '200' %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,class: "profile-img", fallback: "no_image.jpg" %>
         </label>
     	</div>
     	<div class="recruitment-information-box">
@@ -81,49 +81,44 @@
       <div class="recruitment-information-box">
         <label class="recruitment-information-contents">
           <label class="recruitment-information-title">● URL：</label>
-          <%= @user.url %>
+          <div class="youtube">
+            <iframe width="400" height="300" src="https://www.youtube.com/embed/<%= @user.url %>" frameborder="0" allowfullscreen></iframe>
+          </div>
         </label>
       </div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && @user != current_user %>
         <div class="user-show-message">
+          <i class="iconcolor fas fa-envelope-square"></i>
           <%= link_to user_recipient_user_messages_path(current_user.id, @user.id) do %>
             メッセージを送る
           <% end %>
         </div>
 
         <div class="user-evaluations-box">
-          <label>ユーザーの評価</label>
+          <p>ユーザーの評価</p>
 
           <% if @good_evaluationexist.blank? %>
-            <li>
               <%= link_to user_good_evaluations_path(@user), method: :post do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @good_evaluation.count %> 高評価数
+                <i class="iconcolor far fa-thumbs-up"></i>
+                <%= @good_evaluation.count %>
               <% end %>
-            </li>
           <% else %>
-            <li>
               <%= link_to user_good_evaluations_path(@user), method: :delete do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @good_evaluation.count %> 高評価数
+                <i class="iconcolor far fa-thumbs-up"></i>
+                <%= @good_evaluation.count %>
               <% end %>
-            </li>
           <% end %>
 
           <% if @bad_evaluationexist.blank? %>
-            <li>
               <%= link_to user_bad_evaluations_path(@user), method: :post do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @bad_evaluation.count %> 低評価数
+                <i class="iconcolor far fa-thumbs-down"></i>
+                <%= @bad_evaluation.count %>
               <% end %>
-            </li>
           <% else %>
-            <li>
               <%= link_to user_bad_evaluations_path(@user), method: :delete do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @bad_evaluation.count %> 低評価数
+                <i class="iconcolor far fa-thumbs-down"></i>
+                <%= @bad_evaluation.count %>
               <% end %>
-            </li>
           <% end %>
         </div>
       <% end %>

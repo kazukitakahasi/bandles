@@ -43,7 +43,7 @@
 			<% end %>
 		</div>
 		<div class="mypage-messages-box">
-			<h2>メッセージ一覧ユーザー</h2>
+			<h1 class="header-buttons-search-recruitments search-user">メッセージ一覧ユーザー</h1>
 			<% @messages.each do |message| %>
 				<label><%= message.user.name %>さん</label>
 				<%= link_to user_recipient_user_messages_path(current_user.id, message.recipient_user) do %>

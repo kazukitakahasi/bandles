@@ -27,7 +27,7 @@ class Recruitment < ApplicationRecord
 	PLAYINGMUSIC = [ ["コピー",1], ["オリジナル",2] ]
 	GENDER = [ ["男性",1], ["女性",2] ]
 
-	belongs_to :user, -> { with_deleted}
+	belongs_to :user
 	has_many :recruitment_charges, dependent: :destroy
 	accepts_nested_attributes_for :recruitment_charges, reject_if: :all_blank, allow_destroy: true
 	has_many :charges, through: :recruitment_charges
@@ -37,4 +37,7 @@ class Recruitment < ApplicationRecord
 	accepts_nested_attributes_for :recruitment_categories, reject_if: :all_blank, allow_destroy: true
 	has_many :categories, through: :recruitment_categories
 	validates :recruitment_categories, length: {maximum: MAX_RECRUITMENT_CATEGORIES_LENGTH}
+
+	validates :title,
+    presence:true
 end

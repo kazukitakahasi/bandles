@@ -1,2 +1,107 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+
+<div class="user-profile-inverse" style="padding-top:80px;">
+  <div class="search-form-box">
+    <h1 class="header-buttons-search-users search-user">登録情報の編集</h1>
+    <div class="recruitment-information-box">
+        <label class="recruitment-information-contents">
+          <%= attachment_image_tag @user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '200', :height => '200' %>
+        </label>
+  	</div>
+  	<div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 名前：</label>
+        <label><%= @user.name %></label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● メールアドレス：</label>
+        <%= @user.email %>
+      </label>
+	  </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 性別：</label>
+        <%= @user.gender %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 誕生日：</label>
+        <%= @user.birthday.strftime("%Y年%m月%d日") %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 都道府県：</label>
+        <%= @user.pref %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● URL：</label>
+        <div class="youtube">
+          <iframe width="400" height="300" src="https://www.youtube.com/embed/<%= @user.url %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 好みのジャンル：</label>
+        <% @user_categories.each do |user_category| %>
+          <%= user_category.category.name %>
+          <label>/</label>
+        <% end %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 担当楽器：</label>
+        <% @user_charges.each do |user_charge| %>
+          <%= user_charge.charge.name %>
+          <label>/</label>
+        <% end %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 好きなアーティスト：</label>
+        <% @favorite_artists.each do |favorite_artist| %>
+          <label class="favorite-box"><%= favorite_artist.name %></label>
+        <% end %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 好きなアルバム：</label>
+        <% @favorite_albums.each do |favorite_album| %>
+          <label class="favorite-box"><%= favorite_album.name %></label>
+        <% end %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 好きな曲：</label>
+        <% @favorite_songs.each do |favorite_song| %>
+          <label class="favorite-box"><%= favorite_song.name %></label>
+        <% end %>
+      </label>
+    </div>
+    <div class="recruitment-information-box">
+      <label class="recruitment-information-contents">
+        <label class="recruitment-information-title">● 自己紹介文：</label>
+        <%= @user.introduction %>
+      </label>
+    </div>
+
+    <div class="user-evaluations-box">
+        <p>ユーザーの評価</p>
+    	<i class="iconcolor far fa-thumbs-up"></i>
+        <%= @good_evaluation.count %>
+        <i class="iconcolor far fa-thumbs-down"></i>
+        <%= @bad_evaluation.count %>
+    </div>
+    <div class="user-show-message">
+      <%= link_to "ユーザーを削除する", admins_user_path(@user.id), data: { confirm: 'Are you sure?' }, method: :delete, class: "unsubscribe-button-style" %>
+    </div>
+  </div>
+</div>

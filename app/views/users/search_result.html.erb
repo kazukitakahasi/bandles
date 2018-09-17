@@ -1,17 +1,36 @@
 
-<div class="user-inverse" style="padding-top:80px;">
-	<h1>記事検索結果</h1>
-	<% @searchresult.each do |user| %>
-		<div><%= attachment_image_tag user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '100', :height => '100' %></div>
-		<%= link_to user_path(user.id) do %>
-			<%= user.name %>
+<div class="recruitment-result-inverse" style="padding-top:80px;">
+	<div class="recruitments-all-box">
+		<h1 class="header-buttons-subscriptions search-user">記事検索結果</h1>
+		<%= paginate @searchresult %>
+		<% if @searchresult.any? %>
+			<h3><%= @searchresult.count %>件ヒットしました。</h3>
+			<% @searchresult.each do |user| %>
+				<div class="recruitment-box">
+					<div class="recruitment-image-box">
+						<%= attachment_image_tag user, :profile_image, :fill, 100, 100,class: "profile-img", fallback: "no_image.jpg" %>
+					</div>
+					<div class="recruitment-title-user-box">
+						<div class="recruitment-title-box"><%= link_to user_path(user.id) do %>
+							<%= user.name %>
+						<% end %></div>
+						(
+						<label><%= user.pref %></label>
+						<label><%= user.gender %></label>
+						<label><%= user.age %>歳</label>
+						）
+						<div>
+							<%= truncate(user.introduction, length: 90) do %>
+ 								<%= link_to "続きを見る", user_path(user.id) %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+			<%= paginate @searchresult %>
+		<% else %>
+			<h1>検索キーワードに当てはまる記事が見つかりませんでした。</h1>
 		<% end %>
-		(
-		<label><%= user.pref %></label>
-		<label><%= user.gender %></label>
-		<label><%= user.age %>歳</label>
-		）
-		<label><%= user.introduction %></label>
-	<% end %>
+	</div>
 </div>
 

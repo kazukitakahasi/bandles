@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+   before_action :authenticate_user!, except: [:top, :show, :search, :search_result]
+
   def top
   end
 
@@ -6,10 +8,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @recruitmentband = Recruitment.find_by(user_id: current_user, recruitment_type: '0')
     @recruitmentadd = Recruitment.find_by(user_id: current_user, recruitment_type: '1')
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
     @messages = Message.where(user_id: current_user, recipient_user: @users).distinct
     @messages2 = Message.where(user_id: @users, recipient_user: current_user).distinct
-    #binding.pry
   end
 
   def show
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
   def search_result
     @q = User.includes(:user_charges, :charges, :user_categories, :categories ).ransack(params[:q])
-    @searchresult = @q.result.page(params[:page]).per(30).distinct
+    @searchresult = @q.result.page(params[:page]).per(20).distinct.reverse_order
   end
 
   def edit
@@ -43,6 +44,8 @@ class UsersController < ApplicationController
     @favorite_artists = @user.favorite_artists
     @favorite_albums = @user.favorite_albums
     @favorite_songs = @user.favorite_songs
+    @good_evaluation = GoodEvaluation.where(evaluated_user: @user.id)
+    @bad_evaluation = BadEvaluation.where(evaluated_user: @user.id)
     if @user.id == current_user.id
       render :edit
     else

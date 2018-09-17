@@ -1,10 +1,12 @@
 class RecruitmentsController < ApplicationController
+   before_action :authenticate_user!, except: [:index, :subscription, :show, :search, :search_result]
+
   def index
-    @recruitments = Recruitment.where(recruitment_type: '0')
+    @recruitments = Recruitment.where(recruitment_type: '0').page(params[:page]).per(30).reverse_order
   end
 
   def subscription
-    @recruitments = Recruitment.where(recruitment_type: '1')
+    @recruitments = Recruitment.where(recruitment_type: '1').page(params[:page]).per(30).reverse_order
   end
 
   def show
@@ -19,7 +21,7 @@ class RecruitmentsController < ApplicationController
 
   def search_result
     @q = Recruitment.includes(:recruitment_charges, :charges, :recruitment_categories, :categories ).ransack(params[:q])
-    @searchresult = @q.result.page(params[:page]).per(30).distinct
+    @searchresult = @q.result.page(params[:page]).per(20).distinct.reverse_order
   end
 
   def new
@@ -41,7 +43,8 @@ class RecruitmentsController < ApplicationController
       flash[:success] = 'successfully created'
       redirect_to mypage_user_path(current_user)
     else
-      redirect_to mypage_user_path(current_user)
+      flash[:success] = '件名を入力して下さい'
+      redirect_to new_recruitment_path
     end
   end
 

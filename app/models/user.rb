@@ -37,10 +37,10 @@ class User < ApplicationRecord
 
   enum gender: { 男性: 0, 女性: 1 }
 
-  has_many :recruitments
+  has_many :recruitments, dependent: :destroy
   has_many :bad_evaluations, dependent: :destroy
   has_many :good_evaluations, dependent: :destroy
-  has_many :reports
+  has_many :reports, dependent: :destroy
   has_many :messages
 
   has_many :favorite_artists
@@ -73,5 +73,18 @@ class User < ApplicationRecord
     d2=Date.today.strftime("%Y%m%d").to_i
     return (d2 - d1) / 10000
   end
+
+  validates :name,
+    presence:true,
+    length: { minimum: 1, maximum: 20}
+
+  validates :gender,
+    presence:true
+  validates :birthday,
+    presence:true
+  validates :pref,
+    presence:true
+  validates :introduction,
+    length: { maximum: 1000}
 
 end
