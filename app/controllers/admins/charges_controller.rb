@@ -1,4 +1,6 @@
 class Admins::ChargesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
   	@charge = Charge.new
   end

@@ -26,10 +26,6 @@
 						</td>
 					</tr>
 					<tr>
-						<th><label>年齢</label></th>
-						<td></td>
-					</tr>
-					<tr>
 						<th><label>担当パート</label></th>
 						<td><%= f.collection_check_boxes :charges_id_in, Charge.all, :id, :name, class: "search-check-box" %></td>
 					</tr>
@@ -46,7 +42,7 @@
 						<td><%= f.search_field :introduction_cont, class: "search-name-field"  %><span class="include">を含む</span></td>
 					</tr>
 					<tr>
-						<th><%= f.submit "検索", class: "start-search-button col-xs-7 bg-danger", style: "color:black;" %></th>
+						<th><%= f.submit "検索", class: "start-search-button col-sm-7 col-xs-11 bg-danger", style: "color:black;" %></th>
 					</tr>
 				</tbody>
 			</table>

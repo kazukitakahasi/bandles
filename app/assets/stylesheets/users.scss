@@ -29,7 +29,6 @@
 	font-size: 45px;
 	padding-bottom: 30px;
 	text-transform: uppercase;
-	
 
 	/* 背景グラデーションを指定・幅を 200% にしておく */
 	background: linear-gradient(to right, #f00 0%, #e0e 15%, #b25979 30%, #c6639e 45%, #0085de 60%, #ffcd25 75%, #f53b1a 90%) 0% center / 200% auto;
@@ -48,9 +47,13 @@
 
 /*---------------sign up----------------*/
 
+.users-devise-error-message{
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .sign-up-background-image{
     width: 100%;
-    height: 800px;
+    height: 1100px;
     padding-bottom: 40px;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent), image-url('musician-2708190_1920.jpg');
     background-attachment: fixed;
@@ -143,6 +146,7 @@ p.sign-up{
 h1.search-user{
     font-size: 25px;
     animation: example 4s linear infinite;
+    padding: 10px 0px;
 }
 table.form{
 	border-collapse: separate;
@@ -170,12 +174,12 @@ table.form{
 
 .user-profile-inverse{
 	width: 100%;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent), image-url('p0113_l.jpeg');
+	background: linear-gradient(to right, rgba(0, 0, 0, 0), transparent), image-url('p0113_l.jpeg');
 }
 
 .user-show-inverse {
 	width: 100%;
-	background: image-url('p0112_l.jpeg');
+	background: image-url('p0113_l.jpeg');
 	background-size: cover;
 	/*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
 }
@@ -183,16 +187,21 @@ table.form{
 	padding: 0px 10px;
 }
 .user-show-message{
-	width: 40%;
+	width: 30%;
 	text-align: center;
 	font-size: 20px;
-	border: solid 2px green;
+	border: solid 2px #0085de;
 	border-radius: 5px;
 	margin: 20px 0px;
 }
 .user-evaluations-box{
 	font-size: 20px;
 	padding-bottom: 30px;
+}
+i.iconcolor {
+    font-size: 30px;
+    padding: 10px;
+    color: #0085de;
 }
 
 /*---------------マイページ----------------*/
@@ -206,5 +215,37 @@ table.form{
 	margin: 30px 20px;
 }
 
+
+
+
+
+.user-edit-inverse {
+    width: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), transparent), image-url('p0113_l.jpeg');
+    /*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
+}
+
+
+/* スマートフォンサイズ(425px)程度の画面の大きさ以下に適用される設定です */
+@media screen and (max-width:425px) {
+.sign-up-background-image p{
+    font-size: 30px;
+}
+p.sign-up{
+    font-size: 25px;
+    padding: 5px;
+}
+.view-registration-box{
+    width: 95%;
+    padding: 10px 0px;
+}
+.sign-up-boxes{
+    width: 95%;
+}
+.introduction-box{
+    width: 100%;
+}
+
+}
 
 

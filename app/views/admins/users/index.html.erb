@@ -1,2 +1,33 @@
-<h1>Admins::Users#index</h1>
-<p>Find me in app/views/admins/users/index.html.erb</p>
+
+<div class="recruitment-result-inverse" style="padding-top:80px;">
+	<div class="recruitments-all-box">
+		<h1 class="header-buttons-subscriptions search-user">ユーザー一覧</h1>
+		<%= paginate @users %>
+			<% @users.each do |user| %>
+				<div class="recruitment-box">
+					<div class="recruitment-image-box">
+						<%= attachment_image_tag user, :profile_image, :fill, 90, 100,class: "profile-img", fallback: "no_image.jpg" %>
+					</div>
+					<div class="recruitment-title-user-box">
+						<div class="recruitment-title-box"><%= link_to admins_user_path(user.id) do %>
+							<%= user.name %>
+						<% end %></div>
+						(
+						<label><%= user.pref %></label>
+						<label><%= user.gender %></label>
+						<label><%= user.age %>歳</label>
+						）
+						<div>
+							<%= truncate(user.introduction, length: 90) do %>
+ 								<%= link_to "続きを見る", admins_user_path(user.id) %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<%= paginate @users %>
+		<div class="edit-user-box">
+			<%= link_to destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>Log out<% end %>
+		</div>
+	</div>
+</div>

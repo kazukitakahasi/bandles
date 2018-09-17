@@ -116,14 +116,16 @@
 }
 
 
-
+.notice{
+  color: white;
+}
 
 /*---------------全画面のdiv-box----------------*/
 
 .user-inverse {
 	width: 100%;
 	height: 1000px;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent), image-url('p0113_l.jpeg');
+	background: linear-gradient(to right, rgba(0, 0, 0, 0), transparent), image-url('p0113_l.jpeg');
 	/*font-family: 'Quattrocento',Palatino,"Book Antiqua",Georgia,serif;*/
 }
 
@@ -173,5 +175,13 @@ footer{
 	color: #f80;
 	width: 200px;
 	text-align: center;
+}
+
+
+/* スマートフォンサイズ(425px)程度の画面の大きさ以下に適用される設定です */
+@media screen and (max-width:425px) {
+.social i {
+    color: blue;
+    }
 }
 

@@ -1,3 +1,6 @@
 class Report < ApplicationRecord
-	belongs_to :user, -> { with_deleted}
+	belongs_to :user
+
+	validates :content,
+    presence:true
 end

@@ -1,5 +1,5 @@
 
-<div class="user-inverse" style="padding-top:80px;">
+<div class="user-edit-inverse" style="padding-top:80px;">
 	<div class="search-form-box">
 		<h1 class="header-buttons-search-recruitments search-user">バンド加入希望記事編集</h1>
 		<%= form_for(@recruitment) do |f| %>
@@ -9,14 +9,14 @@
 						<th><label>記事の種類</label></th>
 						<td>
 							<div class="search-select-box">
-								<%= f.select :recruitment_type, Recruitment.recruitment_types.keys.to_a, style:"color:black;" %>
+								<%= @recruitment.recruitment_type %>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<th><label>記事の件名</label></th>
 						<td>
-							<%= f.text_field :title, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %>
+							<%= f.text_field :title, class: "receruitment_new-show-info col-sm-6 col-xs-7", :placeholder => "" %>
 						</td>
 					</tr>
 					<tr>
@@ -62,7 +62,8 @@
 					<tr>
 						<th><label>音源</label></th>
 						<td>
-						<%= f.url_field :sound_source, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %>
+							<div class="youtube">"https://www.youtube.com/embed/</div>
+							<div><%= f.text_field :sound_source, class: "receruitment_new-show-info col-sm-6 col-xs-7", :placeholder => "" %></div>
 						</td>
 					</tr>
 					<tr>
@@ -94,7 +95,7 @@
 					<tr>
 						<th><label>記事の内容</label></th>
 						<td>
-							<%= f.text_field :introduction, class: "receruitment_new-show-info col-xs-3", :placeholder => "" %>
+							<%= f.text_area :introduction, :size=>"60x10" , :placeholder => "", class: "introduction-box" %>
 						</td>
 					</tr>
 					<tr>

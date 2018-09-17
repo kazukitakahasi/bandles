@@ -1,24 +1,32 @@
 
-<div class="user-inverse" style="padding-top:80px;">
-	<div class="search-form-box">
+<div class="recruitments-all-inverse" style="padding-top:80px;">
+	<div class="recruitments-all-box">
 		<h1 class="header-buttons-recruitments search-user">バンドメンバー募集記事一覧</h1>
+		<%= paginate @recruitments %>
 		<% @recruitments.each do |recruitment| %>
 			<div class="recruitment-box">
 				<div class="recruitment-image-box">
-					<%= attachment_image_tag recruitment.user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '100', :height => '100' %>
+					<%= attachment_image_tag recruitment.user, :profile_image, :fill, 90, 100,class: "profile-img", fallback: "no_image.jpg" %>
 				</div>
 				<div class="recruitment-title-user-box">
 					<div class="recruitment-title-box"><%= link_to recruitment_path(recruitment.id) do %>
 						<%= recruitment.title %>
 					<% end %></div>
-						<label><%= recruitment.user.name %></label>
-						（
-						<label><%= recruitment.user.pref %></label>
-						<label><%= recruitment.user.gender %></label>
-						<label><%= recruitment.user.age %>歳</label>
-						）
+					<label><%= recruitment.user.name %></label>
+					（
+					<label><%= recruitment.user.pref %></label>
+					<label><%= recruitment.user.gender %></label>
+					<label><%= recruitment.user.age %>歳</label>
+					）
+					<label class="recruitment-time"><%= recruitment.created_at.strftime("%Y/%m/%d/%H:%M") %></label>
+					<div>
+						<%= truncate(recruitment.introduction, length: 90) do %>
+							<%= link_to "続きを見る", recruitment_path(recruitment.id) %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		<% end %>
+		<%= paginate @recruitments %>
 	</div>
 </div>
